@@ -1,4 +1,3 @@
-// src/App.jsx
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import Home from './pages/Home';
@@ -11,7 +10,9 @@ function App() {
             <Header />
 
             {/* ──────────────── 🏠 HOME 🏠 ──────────────── */}
-            <Home />
+            <main>
+                <Home />
+            </main>
 
             {/* ──────────────── ⬇️ FOOTER ⬇️ ──────────────── */}
             <Footer />

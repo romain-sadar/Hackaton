@@ -1,0 +1,74 @@
+.hero {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+
+  &__overlay {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  &__content {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      font-family: 'Cormorant', serif;
+
+      span {
+        color: #c8924f; // doré comme sur ton modèle
+        font-family: 'Cormorant', serif;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      color: #eee;
+    }
+  }
+
+  &__search-bar {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+
+    input {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border-radius: 6px 0 0 6px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background-color: #c8924f;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background-color: #a77634;
+      }
+    }
+  }
+}

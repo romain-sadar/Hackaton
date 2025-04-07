@@ -1,3 +1,16 @@
-@import "./import/reset";
-@import "./import/mixins";
-@import "./import/variables";
+@import "import/reset";
+@import "import/mixins";
+@import "import/variables";
+
+@import "import/layouts/header";
+@import "import/layouts/footer";
+
+@import "import/pages/home";
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant', serif;
+}
