@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: hackaton_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=1
+      - PYTHONUNBUFFERED=1
+      - POSTGRES_DB=hackaton
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - PYTHONBREAKPOINT=ipdb.set_trace
+      - PYTEST_ADDOPTS=--pdbcls=IPython.terminal.debugger:Pdb -n 0 --randomly-seed=42
+    depends_on:
+      - db
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+  db:
+    image: postgres:13
+    container_name: hackaton_db
+    environment:
+      - POSTGRES_DB=hackaton
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
