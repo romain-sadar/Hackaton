@@ -1,4 +1,5 @@
 import backgroundImg from '../assets/images/webp/background_lyon.webp';
+import LineChart from '../components/LineChart';
 
 function Home() {
     return (
@@ -19,8 +20,13 @@ function Home() {
                 </div>
             </section>
 
+            {/* Chart Section */}
             <section className="section-2">
-                {/* Ton contenu suivant ici */}
+                <div class="inner-div">
+                    <h2>Données Visuelles</h2>
+                    <LineChart />
+                </div>
+
             </section>
         </>
     );

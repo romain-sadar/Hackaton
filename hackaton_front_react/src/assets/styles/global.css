@@ -190,3 +190,21 @@ h1, h2, h3 {
 }
 
 /*# sourceMappingURL=global.css.map */
+
+
+.section-2 {
+  padding: 2rem;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section-2 canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.inner-div{
+  width: 1250px;
+}
