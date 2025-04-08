@@ -8,11 +8,12 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 // Register required components for Line chart
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 const Chart = ({ 
   data, 
@@ -26,6 +27,19 @@ const Chart = ({
 }) => {
   const chartRef = useRef(null);
 
+  useEffect(() => {
+    if (chartRef.current) {
+      const chart = chartRef.current;
+      const ctx = chart.ctx;
+      const gradient = ctx.createLinearGradient(0, 0, 0, chart.height);
+      gradient.addColorStop(0, `${color}30`); // 50% opacity at the top
+      gradient.addColorStop(1, `${color}15`); // 10% opacity at the bottom
+      
+      chart.data.datasets[0].backgroundColor = gradient;
+      chart.update();
+    }
+  }, [color]);
+
   const chartData = {
     labels: data.labels,
     datasets: [
@@ -34,17 +48,7 @@ const Chart = ({
         data: data.values,
         fill: true,
         borderColor: color,
-        backgroundColor: (context) => {
-          const chart = context.chart;
-          const {ctx, chartArea} = chart;
-          if (!chartArea) {
-            return null;
-          }
-          const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-          gradient.addColorStop(0, `${color}20`);
-          gradient.addColorStop(1, `${color}80`);
-          return gradient;
-        },
+        backgroundColor: 'transparent', 
         tension: 0.3,
         pointRadius: 5,
         pointBackgroundColor: color,
@@ -136,7 +140,7 @@ const Chart = ({
 
   return (
     <div style={{ height, width: '100%', maxWidth: '100%', margin: '0 auto' }}>
-      <Line data={chartData} options={options} />
+      <Line ref={chartRef} data={chartData} options={options} />
     </div>
   );
 };
