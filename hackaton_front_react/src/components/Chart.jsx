@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   Chart as ChartJS,
   LineElement,
@@ -24,6 +24,8 @@ const Chart = ({
   stepSize = 500,
   showEuro = false
 }) => {
+  const chartRef = useRef(null);
+
   const chartData = {
     labels: data.labels,
     datasets: [
@@ -33,10 +35,14 @@ const Chart = ({
         fill: true,
         borderColor: color,
         backgroundColor: (context) => {
-          const ctx = context.chart.ctx;
-          const gradient = ctx.createLinearGradient(0, 0, 0, context.chart.height);
-          gradient.addColorStop(0, `${color}4D`); // 30% opacity
-          gradient.addColorStop(1, `${color}00`); // 0% opacity
+          const chart = context.chart;
+          const {ctx, chartArea} = chart;
+          if (!chartArea) {
+            return null;
+          }
+          const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+          gradient.addColorStop(0, `${color}20`);
+          gradient.addColorStop(1, `${color}80`);
           return gradient;
         },
         tension: 0.3,
@@ -70,12 +76,13 @@ const Chart = ({
           weight: 'bold',
           family: "'Nunito', sans-serif"
         },
-        padding: { top: 10, bottom: 10 },
+        padding: { top: 0, bottom: 0 },
       },
       tooltip: {
         callbacks: {
           label: function (context) {
-            return `${context.dataset.label}: ${context.formattedValue} €`;
+            const formattedValue = context.formattedValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            return `${context.dataset.label}: ${showEuro ? `${formattedValue} €` : formattedValue}`;
           },
         },
         bodyFont: {
@@ -88,6 +95,9 @@ const Chart = ({
         grid: {
           display: false,
         },
+        border: {
+          display: false
+        },
         ticks: {
           font: {
             family: "'Nunito', sans-serif"
@@ -96,6 +106,13 @@ const Chart = ({
       },
       y: {
         beginAtZero: false,
+        border: {
+          display: false
+        },
+        grid: {
+          display: true,
+          drawBorder: false
+        },
         ticks: {
           callback: (value) => {
             const formattedValue = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
