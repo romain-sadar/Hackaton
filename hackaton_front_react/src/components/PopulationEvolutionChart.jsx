@@ -11,8 +11,7 @@ const PopulationEvolutionChart = () => {
   return (
     <Chart 
       data={data}
-      title="Évolution de la population"
-      yAxisLabel="Nombre d'habitants"
+      // yAxisLabel="Nombre d'habitants"
       color="#4a90e2"
       stepSize={5000}
     />

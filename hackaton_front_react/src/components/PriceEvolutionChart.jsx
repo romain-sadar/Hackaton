@@ -13,8 +13,7 @@ const PriceEvolutionChart = () => {
   return (
     <Chart 
       data={data}
-      title="Évolution du prix moyen au m²"
-      yAxisLabel="Prix au m² (€)"
+      // yAxisLabel="Prix au m² (€)"
       showEuro={true}
     />
   );
