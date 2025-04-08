@@ -73,9 +73,22 @@
   }
 }
 
+.section-2 {
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .section-3 {
   padding: 4rem 2rem;
-  background: linear-gradient(to bottom right, #f9f9f9, #ffffff);
+  background-color: #f8f9fa;
   border-radius: 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   margin-top: 4rem;

@@ -10,8 +10,29 @@
 
 body {
   font-family: 'Nunito', sans-serif;
+  background-color: #f8f9fa;
 }
 
 h1, h2, h3 {
   font-family: 'Fraunces', serif;
 }
+
+.inner-div {
+  width: 1250px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+} 
