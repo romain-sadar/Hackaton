@@ -1,5 +1,6 @@
 import backgroundImg from '../assets/images/webp/background_lyon.webp';
-import LineChart from '../components/LineChart';
+import PriceEvolutionChart from '../components/PriceEvolutionChart';
+import PopulationEvolutionChart from '../components/PopulationEvolutionChart';
 
 function Home() {
     return (
@@ -20,13 +21,19 @@ function Home() {
                 </div>
             </section>
 
-            {/* Chart Section */}
+            {/* Charts Section */}
             <section className="section-2">
-                <div class="inner-div">
-                    <h2>Données Visuelles</h2>
-                    <LineChart />
+                <h2 className="section-title">Évolution des indicateurs clés</h2>
+                <div className="charts-container">
+                    <div className="chart-wrapper">
+                        <h3>Évolution des prix</h3>
+                        <PriceEvolutionChart />
+                    </div>
+                    <div className="chart-wrapper">
+                        <h3>Évolution de la population</h3>
+                        <PopulationEvolutionChart />
+                    </div>
                 </div>
-
             </section>
         </>
     );
