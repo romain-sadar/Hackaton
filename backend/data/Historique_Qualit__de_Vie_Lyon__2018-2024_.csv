@@ -1,0 +1,141 @@
+quartier,annee,pollution,score_transport
+Croix-Rousse,2018,51.7,6
+Croix-Rousse,2019,51.3,6
+Croix-Rousse,2020,51.2,6
+Croix-Rousse,2021,50.6,7
+Croix-Rousse,2022,50.8,7
+Croix-Rousse,2023,50.7,7
+Croix-Rousse,2024,49.9,8
+Part-Dieu,2018,43.0,9
+Part-Dieu,2019,42.4,9
+Part-Dieu,2020,42.4,9
+Part-Dieu,2021,41.6,10
+Part-Dieu,2022,41.3,10
+Part-Dieu,2023,39.3,10
+Part-Dieu,2024,40.5,10
+La Guillotière,2018,50.6,7
+La Guillotière,2019,50.3,7
+La Guillotière,2020,49.3,7
+La Guillotière,2021,48.4,8
+La Guillotière,2022,49.2,8
+La Guillotière,2023,46.9,8
+La Guillotière,2024,48.4,9
+Vieux Lyon,2018,54.9,7
+Vieux Lyon,2019,54.6,7
+Vieux Lyon,2020,54.1,7
+Vieux Lyon,2021,53.0,8
+Vieux Lyon,2022,53.7,8
+Vieux Lyon,2023,51.6,8
+Vieux Lyon,2024,52.4,9
+Gerland,2018,46.9,7
+Gerland,2019,46.3,7
+Gerland,2020,45.8,7
+Gerland,2021,46.2,8
+Gerland,2022,46.1,8
+Gerland,2023,44.4,8
+Gerland,2024,42.6,9
+Bellecour,2018,45.7,6
+Bellecour,2019,45.1,6
+Bellecour,2020,45.0,6
+Bellecour,2021,44.9,7
+Bellecour,2022,43.0,7
+Bellecour,2023,43.5,7
+Bellecour,2024,42.3,8
+Confluence,2018,47.4,9
+Confluence,2019,47.1,9
+Confluence,2020,46.2,9
+Confluence,2021,46.8,10
+Confluence,2022,46.0,10
+Confluence,2023,44.8,10
+Confluence,2024,43.6,10
+Monplaisir,2018,46.3,9
+Monplaisir,2019,45.8,9
+Monplaisir,2020,45.4,9
+Monplaisir,2021,44.2,10
+Monplaisir,2022,44.8,10
+Monplaisir,2023,43.5,10
+Monplaisir,2024,43.8,10
+Mermoz,2018,44.8,8
+Mermoz,2019,44.1,8
+Mermoz,2020,44.2,8
+Mermoz,2021,43.2,9
+Mermoz,2022,43.4,9
+Mermoz,2023,43.6,9
+Mermoz,2024,42.9,10
+Vaise,2018,48.8,6
+Vaise,2019,48.1,6
+Vaise,2020,48.0,6
+Vaise,2021,47.5,7
+Vaise,2022,47.8,7
+Vaise,2023,46.2,7
+Vaise,2024,46.2,8
+Saint-Rambert,2018,46.1,9
+Saint-Rambert,2019,45.3,9
+Saint-Rambert,2020,45.6,9
+Saint-Rambert,2021,44.5,10
+Saint-Rambert,2022,43.7,10
+Saint-Rambert,2023,43.3,10
+Saint-Rambert,2024,44.6,10
+Champvert,2018,51.0,6
+Champvert,2019,50.7,6
+Champvert,2020,50.4,6
+Champvert,2021,48.8,7
+Champvert,2022,49.2,7
+Champvert,2023,48.4,7
+Champvert,2024,48.9,8
+Jean Macé,2018,51.5,6
+Jean Macé,2019,50.8,6
+Jean Macé,2020,50.6,6
+Jean Macé,2021,50.2,7
+Jean Macé,2022,48.9,7
+Jean Macé,2023,50.2,7
+Jean Macé,2024,48.4,8
+Gratte-Ciel,2018,47.9,6
+Gratte-Ciel,2019,47.2,6
+Gratte-Ciel,2020,46.7,6
+Gratte-Ciel,2021,46.9,7
+Gratte-Ciel,2022,47.0,7
+Gratte-Ciel,2023,46.2,7
+Gratte-Ciel,2024,44.0,8
+Charpennes,2018,48.6,9
+Charpennes,2019,48.2,9
+Charpennes,2020,47.8,9
+Charpennes,2021,47.9,10
+Charpennes,2022,47.3,10
+Charpennes,2023,46.0,10
+Charpennes,2024,45.2,10
+Perrache,2018,43.7,6
+Perrache,2019,43.5,6
+Perrache,2020,42.2,6
+Perrache,2021,41.8,7
+Perrache,2022,42.6,7
+Perrache,2023,42.3,7
+Perrache,2024,40.5,8
+La Duchère,2018,53.0,8
+La Duchère,2019,52.3,8
+La Duchère,2020,51.4,8
+La Duchère,2021,52.0,9
+La Duchère,2022,50.0,9
+La Duchère,2023,50.7,9
+La Duchère,2024,51.4,10
+Sans Souci,2018,45.7,7
+Sans Souci,2019,45.1,7
+Sans Souci,2020,44.9,7
+Sans Souci,2021,44.4,8
+Sans Souci,2022,44.7,8
+Sans Souci,2023,42.2,8
+Sans Souci,2024,42.3,9
+Saxe-Gambetta,2018,40.9,7
+Saxe-Gambetta,2019,40.4,7
+Saxe-Gambetta,2020,39.6,7
+Saxe-Gambetta,2021,38.8,8
+Saxe-Gambetta,2022,37.8,8
+Saxe-Gambetta,2023,39.7,8
+Saxe-Gambetta,2024,38.5,9
+Brotteaux,2018,41.7,9
+Brotteaux,2019,41.2,9
+Brotteaux,2020,41.0,9
+Brotteaux,2021,39.4,10
+Brotteaux,2022,40.6,10
+Brotteaux,2023,38.8,10
+Brotteaux,2024,40.2,10

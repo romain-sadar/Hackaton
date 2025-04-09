@@ -1,0 +1,141 @@
+quartier,annee,prix_m2,nb_ventes
+Croix-Rousse,2018,4828.95,342
+Croix-Rousse,2019,4973.19,347
+Croix-Rousse,2020,5110.49,347
+Croix-Rousse,2021,5147.16,348
+Croix-Rousse,2022,5394.95,303
+Croix-Rousse,2023,5424.47,307
+Croix-Rousse,2024,5361.7,322
+Part-Dieu,2018,5027.37,279
+Part-Dieu,2019,5131.23,288
+Part-Dieu,2020,5128.52,260
+Part-Dieu,2021,5227.62,238
+Part-Dieu,2022,5327.02,288
+Part-Dieu,2023,5567.95,257
+Part-Dieu,2024,5335.48,265
+La Guillotière,2018,4768.74,149
+La Guillotière,2019,4846.7,149
+La Guillotière,2020,4987.39,177
+La Guillotière,2021,5084.28,165
+La Guillotière,2022,5132.76,179
+La Guillotière,2023,5104.5,177
+La Guillotière,2024,5276.45,155
+Vieux Lyon,2018,4667.79,241
+Vieux Lyon,2019,4753.6,250
+Vieux Lyon,2020,4809.49,214
+Vieux Lyon,2021,5038.81,244
+Vieux Lyon,2022,5186.06,223
+Vieux Lyon,2023,5105.32,231
+Vieux Lyon,2024,5398.67,242
+Gerland,2018,4451.25,207
+Gerland,2019,4553.71,230
+Gerland,2020,4615.06,244
+Gerland,2021,4639.1,237
+Gerland,2022,4835.75,211
+Gerland,2023,4889.61,229
+Gerland,2024,5118.28,229
+Bellecour,2018,4747.56,300
+Bellecour,2019,4827.01,316
+Bellecour,2020,4975.27,304
+Bellecour,2021,4912.08,302
+Bellecour,2022,5106.16,322
+Bellecour,2023,5157.57,322
+Bellecour,2024,5268.78,349
+Confluence,2018,4255.21,214
+Confluence,2019,4303.53,214
+Confluence,2020,4369.86,226
+Confluence,2021,4495.14,240
+Confluence,2022,4456.43,215
+Confluence,2023,4667.76,200
+Confluence,2024,4625.08,227
+Monplaisir,2018,3831.79,284
+Monplaisir,2019,3930.64,324
+Monplaisir,2020,3999.6,307
+Monplaisir,2021,4017.68,301
+Monplaisir,2022,4179.49,314
+Monplaisir,2023,4075.38,322
+Monplaisir,2024,4187.3,288
+Mermoz,2018,4869.72,241
+Mermoz,2019,5013.83,239
+Mermoz,2020,5018.58,246
+Mermoz,2021,5166.73,223
+Mermoz,2022,5262.31,230
+Mermoz,2023,5185.04,243
+Mermoz,2024,5571.63,217
+Vaise,2018,4887.87,231
+Vaise,2019,4970.08,226
+Vaise,2020,5069.24,268
+Vaise,2021,5269.01,260
+Vaise,2022,5148.49,233
+Vaise,2023,5560.33,228
+Vaise,2024,5366.32,259
+Saint-Rambert,2018,4979.82,279
+Saint-Rambert,2019,5039.69,268
+Saint-Rambert,2020,5186.88,288
+Saint-Rambert,2021,5411.47,247
+Saint-Rambert,2022,5472.58,253
+Saint-Rambert,2023,5542.86,269
+Saint-Rambert,2024,5621.11,274
+Champvert,2018,4913.43,232
+Champvert,2019,5037.79,223
+Champvert,2020,5025.44,222
+Champvert,2021,5312.0,223
+Champvert,2022,5501.99,214
+Champvert,2023,5531.43,203
+Champvert,2024,5445.22,229
+Jean Macé,2018,4815.39,342
+Jean Macé,2019,4957.11,317
+Jean Macé,2020,4942.66,330
+Jean Macé,2021,5192.09,337
+Jean Macé,2022,5051.47,341
+Jean Macé,2023,5325.47,367
+Jean Macé,2024,5430.13,342
+Gratte-Ciel,2018,4902.89,222
+Gratte-Ciel,2019,5032.12,201
+Gratte-Ciel,2020,5176.65,209
+Gratte-Ciel,2021,5298.57,204
+Gratte-Ciel,2022,5292.13,192
+Gratte-Ciel,2023,5623.24,227
+Gratte-Ciel,2024,5408.48,225
+Charpennes,2018,4645.19,351
+Charpennes,2019,4760.91,362
+Charpennes,2020,4781.53,360
+Charpennes,2021,4996.55,313
+Charpennes,2022,5133.49,353
+Charpennes,2023,5284.73,347
+Charpennes,2024,5411.3,300
+Perrache,2018,5075.9,186
+Perrache,2019,5189.41,186
+Perrache,2020,5252.63,186
+Perrache,2021,5379.58,183
+Perrache,2022,5462.02,175
+Perrache,2023,5721.22,171
+Perrache,2024,5470.34,165
+La Duchère,2018,4868.39,174
+La Duchère,2019,4940.4,189
+La Duchère,2020,5069.11,197
+La Duchère,2021,5304.74,182
+La Duchère,2022,5188.3,180
+La Duchère,2023,5484.38,205
+La Duchère,2024,5572.71,193
+Sans Souci,2018,3536.35,243
+Sans Souci,2019,3587.81,242
+Sans Souci,2020,3656.39,240
+Sans Souci,2021,3679.02,233
+Sans Souci,2022,3850.48,238
+Sans Souci,2023,3951.49,238
+Sans Souci,2024,3855.01,246
+Saxe-Gambetta,2018,4688.03,280
+Saxe-Gambetta,2019,4788.39,286
+Saxe-Gambetta,2020,4895.8,291
+Saxe-Gambetta,2021,5024.12,268
+Saxe-Gambetta,2022,4924.36,265
+Saxe-Gambetta,2023,5367.65,258
+Saxe-Gambetta,2024,5272.14,296
+Brotteaux,2018,4945.69,327
+Brotteaux,2019,5002.05,351
+Brotteaux,2020,5145.78,333
+Brotteaux,2021,5103.98,356
+Brotteaux,2022,5388.7,322
+Brotteaux,2023,5580.09,303
+Brotteaux,2024,5339.64,324
