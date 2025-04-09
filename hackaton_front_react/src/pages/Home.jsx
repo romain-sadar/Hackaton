@@ -2,7 +2,7 @@ import React from 'react'
 import backgroundImg from '../assets/images/webp/background_lyon.webp'
 import PriceEvolutionChart from '../components/PriceEvolutionChart'
 import PopulationEvolutionChart from '../components/PopulationEvolutionChart'
-import DemographyTable from '../components/DemographyTable'
+import DataTabs from '../components/DataTabs'
 
 const Home = () => {
     return (
@@ -38,7 +38,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <DemographyTable />
+            <DataTabs />
         </>
     )
 }

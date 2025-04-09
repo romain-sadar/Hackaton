@@ -75,7 +75,7 @@
 
 .section-2 {
   padding: 4rem 2rem;
-  background-color: #f8f9fa;
+  background-color: #fafafa;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -92,19 +92,19 @@
 
   .tab-buttons {
     display: flex;
-    gap: 0.5rem;
+    gap: 0rem;
     justify-content: flex-start;
-    margin-bottom: 2rem;
     flex-wrap: wrap;
+    padding-inline: 2rem;
 
     button {
       padding: 0.6rem 1.4rem;
       font-size: 0.95rem;
       font-weight: 500;
       color: #374151;
-      background: #f3f4f6;
+      background: #fff;
       border: 1px solid transparent;
-      border-radius: 999px; // pill shape
+      border-radius: 0px; // pill shape
       cursor: pointer;
       transition: all 0.2s ease-in-out;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -129,7 +129,7 @@
 
 .section-3 {
   padding: 2rem;
-  background-color: #f8f9fa;
+  background-color: #fafafa;
   border-radius: 1rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 
@@ -145,9 +145,10 @@
     width: 100%;
     border-collapse: collapse;
     background-color: #ffffff;
-    border-radius: 1rem;
+    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+    font-family: 'Nunito', sans-serif;
 
     thead {
       background-color: #1f2937;
