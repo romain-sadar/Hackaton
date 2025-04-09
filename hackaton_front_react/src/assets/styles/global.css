@@ -194,7 +194,7 @@
 }
 
 .data-tabs {
-  padding: 2rem;
+  padding-block: 2rem;
   font-family: "Segoe UI", sans-serif;
 }
 .data-tabs .tab-buttons {
