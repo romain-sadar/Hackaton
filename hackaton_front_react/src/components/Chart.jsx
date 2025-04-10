@@ -136,6 +136,13 @@ const Chart = ({
         }
       },
     },
+    animation: {
+      radius: {
+        duration: 400,
+        easing: 'linear',
+        loop: (context) => context.active
+      }
+    }
   };
 
   return (
