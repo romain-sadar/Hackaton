@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-const QualityOfLifeTable = () => {
+const QualityOfLifeTable = ({ selectedCity, isValidCity }) => {
     const [qolData, setQolData] = useState([]);
-    const [quartiers, setQuartiers] = useState([]);
-    const [selectedQuartier, setSelectedQuartier] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
         fetchQolData();
-        fetchQuartiers();
     }, []);
 
     const fetchQolData = async () => {
@@ -28,25 +25,8 @@ const QualityOfLifeTable = () => {
         }
     };
 
-    const fetchQuartiers = async () => {
-        try {
-            const response = await fetch('http://localhost:8000/list_quartiers/');
-            if (!response.ok) {
-                throw new Error(`Erreur HTTP : ${response.status}`);
-            }
-            const data = await response.json();
-            setQuartiers(data.quartiers);
-        } catch (err) {
-            setError(err.message);
-        }
-    };
-
-    const handleQuartierChange = (e) => {
-        setSelectedQuartier(e.target.value);
-    };
-
-    const filteredData = selectedQuartier
-        ? qolData.filter((item) => item.quartier === selectedQuartier)
+    const filteredData = isValidCity
+        ? qolData.filter(item => item.quartier === selectedCity)
         : qolData;
 
     if (loading) {
@@ -58,21 +38,11 @@ const QualityOfLifeTable = () => {
     }
 
     return (
-        // On entoure tout dans la class .section-3 pour hériter du style
         <section className="section-3">
-            <h2>Tableau - Qualité de vie</h2>
-
-            <label htmlFor="quartier-qol-select">Filtrer par quartier : </label>
-            <select
-                id="quartier-qol-select"
-                value={selectedQuartier}
-                onChange={handleQuartierChange}
-            >
-                <option value="">Tous</option>
-                {quartiers.map((q) => (
-                    <option key={q} value={q}>{q}</option>
-                ))}
-            </select>
+            <h2>
+                Tableau - Qualité de vie
+                {selectedCity && isValidCity ? ` à ${selectedCity}` : ''}
+            </h2>
 
             <table>
                 <thead>

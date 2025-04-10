@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 const DemographicsTable = ({ selectedCity, isValidCity }) => {
     const [demographicsData, setDemographicsData] = useState([]);
-    const [quartiers, setQuartiers] = useState([]);
-    const [selectedQuartier, setSelectedQuartier] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
         fetchAllDemographics();
-        fetchQuartiers();
     }, []);
 
     const fetchAllDemographics = async () => {
@@ -28,25 +25,10 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
         }
     };
 
-    const fetchQuartiers = async () => {
-        try {
-            const response = await fetch('http://localhost:8000/list_quartiers/');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            setQuartiers(data.quartiers);
-        } catch (err) {
-            setError(err.message);
-        }
-    };
-
-    const handleQuartierChange = (e) => {
-        setSelectedQuartier(e.target.value);
-    };
-
-    const filteredData = selectedQuartier
-        ? demographicsData.filter((item) => item.quartier === selectedQuartier)
+    // Si l'utilisateur a choisi un quartier valide, on filtre la data
+    // Sinon, on affiche tout
+    const filteredData = isValidCity
+        ? demographicsData.filter(item => item.quartier === selectedCity)
         : demographicsData;
 
     if (loading) {
@@ -59,19 +41,10 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
 
     return (
         <section className="section-3">
-            <h2>Données démographiques {selectedCity && isValidCity ? `de ${selectedCity}` : ''}</h2>
-
-            <label htmlFor="quartier-select">Filtrer par quartier: </label>
-            <select
-                id="quartier-select"
-                value={selectedQuartier}
-                onChange={handleQuartierChange}
-            >
-                <option value="">Tous</option>
-                {quartiers.map((q) => (
-                    <option key={q} value={q}>{q}</option>
-                ))}
-            </select>
+            <h2>
+                Données démographiques
+                {selectedCity && isValidCity ? ` de ${selectedCity}` : ''}
+            </h2>
 
             <table>
                 <thead>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import DemographyTable from './DemographicsTable.jsx';
-import AgeDistributionChart from './AgeDistributionChart';
-import GenderDistributionChart from './GenderDistributionChart';
+import DemographicsTable from './DemographicsTable';
+import QualityOfLifeTable from './QualityOfLifeTable';
+import RealEstateTable from './RealEstateTable';
 
 const DataTabs = ({ selectedCity, isValidCity }) => {
     const [activeTab, setActiveTab] = useState('demography');
@@ -20,31 +20,34 @@ const DataTabs = ({ selectedCity, isValidCity }) => {
                         className={activeTab === 'prices' ? 'active' : ''}
                         onClick={() => setActiveTab('prices')}
                     >
-                        Prix
+                        Immobilier
                     </button>
                     <button
-                        className={activeTab === 'age' ? 'active' : ''}
-                        onClick={() => setActiveTab('age')}
+                        className={activeTab === 'quality' ? 'active' : ''}
+                        onClick={() => setActiveTab('quality')}
                     >
-                        Répartition par âge
+                        Qualité de vie
                     </button>
                 </div>
 
                 <div className="tab-content">
-                    {activeTab === 'demography' && <DemographyTable selectedCity={selectedCity} isValidCity={isValidCity} />}
-                    {activeTab === 'prices' && <section className="section-3"><h2>Prix de l'immobilier {selectedCity && isValidCity ? `à ${selectedCity}` : 'à Lyon'}</h2><p>À venir...</p></section>}
-                    {activeTab === 'age' && (
-                        <section className="section-3">
-                            <h2>Répartition de la population {selectedCity && isValidCity ? `à ${selectedCity}` : 'à Lyon'}</h2>
-                            <div className="charts-container" style={{ gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                                <div className="chart-wrapper">
-                                    <AgeDistributionChart />
-                                </div>
-                                <div className="chart-wrapper">
-                                    <GenderDistributionChart />
-                                </div>
-                            </div>
-                        </section>
+                    {activeTab === 'demography' && (
+                        <DemographicsTable
+                            selectedCity={selectedCity}
+                            isValidCity={isValidCity}
+                        />
+                    )}
+                    {activeTab === 'prices' && (
+                        <RealEstateTable
+                            selectedCity={selectedCity}
+                            isValidCity={isValidCity}
+                        />
+                    )}
+                    {activeTab === 'quality' && (
+                        <QualityOfLifeTable
+                            selectedCity={selectedCity}
+                            isValidCity={isValidCity}
+                        />
                     )}
                 </div>
             </div>
@@ -52,4 +55,4 @@ const DataTabs = ({ selectedCity, isValidCity }) => {
     );
 };
 
-export default DataTabs; 
+export default DataTabs;
