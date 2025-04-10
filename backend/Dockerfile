@@ -32,4 +32,5 @@ COPY . /app
 EXPOSE 8000
 
 # Start the application using the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py import_lyon_data && python manage.py runserver 0.0.0.0:8000"]
+
