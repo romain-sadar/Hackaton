@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .models import QualityOfLife, RealEstate, Demographics, QualityOfLifeDataset, RealEstateDataset, DemographicsDataset
-from .serializers import QualityOfLifeSerializer, RealEstateSerializer, DemographicsSerializer, QualityOfLifeDatasetSerializer, RealEstateDatasetSerializer, DemographicsDatasetSerializer
+from .serializers import QualityOfLifeSerializer, RealEstateSerializer, DemographicsSerializer, QualityOfLifeDatasetSerializer, RealEstateDatasetSerializer, DemographicsDatasetSerializer, StatsQuartierSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -55,6 +55,29 @@ class AverageByQuartierView(APIView):
             "average_quality_of_life": avg_quality_of_life.get('score_transport__avg', 0),
             "average_population": avg_population.get('population__avg', 0)
         }, status=status.HTTP_200_OK)
+    
+class StatsQuartierView(APIView):
+    def get(self, request, nom_quartier):
+        qol_data = QualityOfLife.objects.filter(quartier=nom_quartier, annee=2024).first()
+        real_estate_data = RealEstate.objects.filter(quartier=nom_quartier, annee=2024).first()
+        demographics_data = Demographics.objects.filter(quartier=nom_quartier, annee=2024).first()
+
+        if not qol_data or not real_estate_data or not demographics_data:
+            return Response({"detail": "Data not found for the specified quartier and year."}, status=status.HTTP_404_NOT_FOUND)
+
+        combined_data = {
+            'quartier': nom_quartier,
+            'pollution': qol_data.pollution,
+            'score_transport': qol_data.score_transport,
+            'prix_m2': real_estate_data.prix_m2,
+            'nb_ventes': real_estate_data.nb_ventes,
+            'population': demographics_data.population,
+            'revenu_median': demographics_data.revenu_median,
+        }
+
+        serializer = StatsQuartierSerializer(combined_data)
+
+        return Response(serializer.data)
     
 @api_view(['GET'])
 def list_quartiers(request):

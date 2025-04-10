@@ -36,3 +36,12 @@ class DemographicsDatasetSerializer(serializers.ModelSerializer):
     class Meta:
         model = DemographicsDataset
         fields = ['quartier', 'population', 'age_0_14', 'age_15_64', 'age_65_plus', 'revenu_median', 'chomage', 'diplomes_bac_plus_2']
+
+class StatsQuartierSerializer(serializers.Serializer):
+    quartier = serializers.CharField()
+    pollution = serializers.FloatField()
+    score_transport = serializers.FloatField()
+    prix_m2 = serializers.FloatField()
+    nb_ventes = serializers.IntegerField()
+    population = serializers.IntegerField()
+    revenu_median = serializers.FloatField()
