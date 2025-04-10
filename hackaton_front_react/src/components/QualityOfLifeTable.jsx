@@ -30,7 +30,7 @@ const QualityOfLifeTable = () => {
 
     const fetchQuartiers = async () => {
         try {
-            const response = await fetch('/api/list_quartiers/');
+            const response = await fetch('http://localhost:8000/list_quartiers/');
             if (!response.ok) {
                 throw new Error(`Erreur HTTP : ${response.status}`);
             }
@@ -45,7 +45,6 @@ const QualityOfLifeTable = () => {
         setSelectedQuartier(e.target.value);
     };
 
-    // Filtrage local
     const filteredData = selectedQuartier
         ? qolData.filter((item) => item.quartier === selectedQuartier)
         : qolData;
@@ -59,8 +58,10 @@ const QualityOfLifeTable = () => {
     }
 
     return (
-        <section>
+        // On entoure tout dans la class .section-3 pour hériter du style
+        <section className="section-3">
             <h2>Tableau - Qualité de vie</h2>
+
             <label htmlFor="quartier-qol-select">Filtrer par quartier : </label>
             <select
                 id="quartier-qol-select"

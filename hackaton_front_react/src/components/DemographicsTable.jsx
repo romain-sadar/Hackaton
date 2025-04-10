@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 
 const DemographicsTable = () => {
-    // État local pour les données, la liste des quartiers, le quartier sélectionné,
-    // ainsi que les états de chargement et d'erreur
     const [demographicsData, setDemographicsData] = useState([]);
     const [quartiers, setQuartiers] = useState([]);
     const [selectedQuartier, setSelectedQuartier] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    // useEffect principal : on lance le fetch initial des données + la liste des quartiers
     useEffect(() => {
         fetchAllDemographics();
         fetchQuartiers();
     }, []);
 
-    // Fonction pour récupérer toutes les données de la démographie
     const fetchAllDemographics = async () => {
         try {
             setLoading(true);
@@ -32,34 +28,27 @@ const DemographicsTable = () => {
         }
     };
 
-    // Fonction pour récupérer la liste des quartiers
     const fetchQuartiers = async () => {
         try {
-            const response = await fetch('/api/list_quartiers/');
+            const response = await fetch('http://localhost:8000/list_quartiers/');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            // data.quartiers contient ["Bellecour","Brotteaux", etc.]
             setQuartiers(data.quartiers);
         } catch (err) {
             setError(err.message);
         }
     };
 
-    // Fonction qui change le quartier sélectionné et filtre soit localement,
-    // soit relance un fetch si tu préfères (ici on filtre localement)
     const handleQuartierChange = (e) => {
-        const chosen = e.target.value;
-        setSelectedQuartier(chosen);
+        setSelectedQuartier(e.target.value);
     };
 
-    // Filtre local : si selectedQuartier est renseigné, on ne garde que les entrées correspondantes
     const filteredData = selectedQuartier
         ? demographicsData.filter((item) => item.quartier === selectedQuartier)
         : demographicsData;
 
-    // Gestion des states de chargement / erreur
     if (loading) {
         return <div>Chargement des données démographiques...</div>;
     }
@@ -68,12 +57,10 @@ const DemographicsTable = () => {
         return <div>Erreur: {error}</div>;
     }
 
-    // Affichage du tableau
     return (
         <section className="section-3">
             <h2>Données démographiques</h2>
 
-            {/* Sélecteur de quartier */}
             <label htmlFor="quartier-select">Filtrer par quartier: </label>
             <select
                 id="quartier-select"
@@ -86,7 +73,6 @@ const DemographicsTable = () => {
                 ))}
             </select>
 
-            {/* Tableau */}
             <table>
                 <thead>
                 <tr>

@@ -30,7 +30,7 @@ const RealEstateTable = () => {
 
     const fetchQuartiers = async () => {
         try {
-            const response = await fetch('/api/list_quartiers/');
+            const response = await fetch('http://localhost:8000/list_quartiers/');
             if (!response.ok) {
                 throw new Error(`Erreur HTTP : ${response.status}`);
             }
@@ -58,7 +58,8 @@ const RealEstateTable = () => {
     }
 
     return (
-        <section>
+        // Même principe : on entoure le tout dans .section-3
+        <section className="section-3">
             <h2>Tableau - Immobilier</h2>
 
             <label htmlFor="quartier-realestate-select">Filtrer par quartier : </label>
