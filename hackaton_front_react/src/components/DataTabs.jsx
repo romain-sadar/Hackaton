@@ -3,7 +3,7 @@ import DemographyTable from './DemographyTable';
 import AgeDistributionChart from './AgeDistributionChart';
 import GenderDistributionChart from './GenderDistributionChart';
 
-const DataTabs = () => {
+const DataTabs = ({ selectedCity, isValidCity }) => {
     const [activeTab, setActiveTab] = useState('demography');
 
     return (
@@ -31,11 +31,11 @@ const DataTabs = () => {
                 </div>
 
                 <div className="tab-content">
-                    {activeTab === 'demography' && <DemographyTable />}
-                    {activeTab === 'prices' && <section className="section-3"><h2>Prix de l'immobilier à Lyon</h2><p>À venir...</p></section>}
+                    {activeTab === 'demography' && <DemographyTable selectedCity={selectedCity} isValidCity={isValidCity} />}
+                    {activeTab === 'prices' && <section className="section-3"><h2>Prix de l'immobilier {selectedCity && isValidCity ? `à ${selectedCity}` : 'à Lyon'}</h2><p>À venir...</p></section>}
                     {activeTab === 'age' && (
                         <section className="section-3">
-                            <h2>Répartition de la population</h2>
+                            <h2>Répartition de la population {selectedCity && isValidCity ? `à ${selectedCity}` : 'à Lyon'}</h2>
                             <div className="charts-container" style={{ gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                                 <div className="chart-wrapper">
                                     <AgeDistributionChart />

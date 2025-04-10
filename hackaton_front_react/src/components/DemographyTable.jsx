@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTable } from 'react-table';
 
-const DemographyTable = () => {
+const DemographyTable = ({ selectedCity, isValidCity }) => {
     const data = React.useMemo(() => [
         { year: 2020, population: 522969, male: 251000, female: 271969, age_0_14: '15%', age_15_24: '12%', age_25_64: '60%', age_65_plus: '13%' },
         { year: 2021, population: 529000, male: 253500, female: 275500, age_0_14: '14.8%', age_15_24: '12.2%', age_25_64: '59.5%', age_65_plus: '13.5%' },
@@ -23,7 +23,7 @@ const DemographyTable = () => {
 
     return (
         <section className="section-3">
-            <h2>Données démographiques de Lyon</h2>
+            <h2>Données démographiques {selectedCity && isValidCity ? `de ${selectedCity}` : ''}</h2>
             <table {...getTableProps()}>
                 <thead>
                 {headerGroups.map(headerGroup => (
