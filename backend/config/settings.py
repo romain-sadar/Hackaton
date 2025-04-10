@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+
 
 os.environ['GDAL_LIBRARY_PATH'] = '/usr/lib/libgdal.so'
 
@@ -29,7 +31,7 @@ SECRET_KEY = 'django-insecure-4+113*rd!esw6n4fk%dk_zx+syqn^tiw9d!gabnt=qbs+m)2)w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,16 +84,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'hackaton',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'db',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='postgres://hackaton_ttx2_user:Urr39QwFluPWl38Pq1ckurpZyaQje2Tu@dpg-cvrrrcili9vc739n1of0-a:5432/hackaton_ttx2'
+    )
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
