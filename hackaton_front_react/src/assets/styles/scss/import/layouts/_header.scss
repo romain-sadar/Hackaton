@@ -2,33 +2,37 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 0rem 2rem;
+  padding: 0.5rem 2rem;
   z-index: 100;
   transition: all 0.3s ease;
-  box-shadow: none;
   font-family: 'Nunito', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &__container {
     max-width: 1280px;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
 
   &__logo {
-    height: 100px;
+    height: 60px;
     object-fit: contain;
+    transition: height 0.3s ease;
   }
 
-  &__nav ul {
-    display: flex;
-    gap: 2rem;
-
-    li {
+  /* === NAVIGATION === */
+  &__nav {
+    ul {
+      display: flex;
+      gap: 2rem;
       list-style: none;
 
-      a {
+      li a {
         font-weight: 600;
         font-size: 0.95rem;
         text-transform: uppercase;
@@ -36,30 +40,93 @@
         transition: color 0.2s ease;
       }
     }
-  }
 
-  &.transparent {
-    background-color: transparent;
+    /* --- Mobile menu (drawer) --- */
+    @media (max-width: 768px) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 70%;
+      max-width: 300px;
+      height: 100vh;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
 
-    .header__nav a {
-      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      &:hover {
-        color: #c8924f;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      pointer-events: none;
+
+      ul {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    &.open {
+      @media (max-width: 768px) {
+        transform: translateX(0);
+        pointer-events: auto;
       }
     }
   }
 
+  /* === BOUTON HAMBURGER (mobile) === */
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 200;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  /* === ÉTAT : TRANSPARENT (Desktop, sans scroll) === */
+  &.transparent {
+    background-color: transparent;
+
+    /* Sur desktop, le texte du menu est or */
+    .header__nav ul li a {
+      color: #c8924f;
+    }
+
+    /* Hamburger en or aussi ? */
+    .header__toggle {
+      color: #c8924f;
+    }
+  }
+
+  /* === ÉTAT : SCROLLED (Desktop, au scroll) === */
   &.scrolled {
     background-color: #fff;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 
-    .header__nav a {
-      color: #c8924f;
+    /* Sur desktop, le texte du menu passe en noir */
+    .header__nav ul li a {
+      color: #333;
+    }
 
-      &:hover {
-        color: #a67838;
-      }
+    /* Hamburger en noir */
+    .header__toggle {
+      color: #333;
+    }
+  }
+
+  /* === SUR MOBILE, TEXTE TOUJOURS NOIR === */
+  @media (max-width: 768px) {
+    .header__nav ul li a {
+      color: #333 !important;
     }
   }
 }

@@ -1,31 +1,46 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logoWhite from '../assets/images/png/logo_main_white.png';
 import logoBlack from '../assets/images/png/logo_main_black.png';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
-    const [scrolled, setScrolled] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            setIsScrolled(window.scrollY > 50);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const currentLogo = scrolled ? logoBlack : logoWhite;
+    const toggleMenu = () => {
+        setIsMenuOpen((prev) => !prev);
+    };
+
+    // Logo différent selon le scroll
+    const currentLogo = isScrolled ? logoBlack : logoWhite;
+
+    // Classes dynamiques pour le header et la nav
+    const headerClass = `header ${isScrolled ? 'scrolled' : 'transparent'}`;
+    const navClass = `header__nav ${isMenuOpen ? 'open' : ''}`;
 
     return (
-        <header className={`header ${scrolled ? 'scrolled' : 'transparent'}`}>
+        <header className={headerClass}>
             <div className="header__container">
-                <img src={currentLogo} alt="Logo BienSitué" className="header__logo" />
+                <img src={currentLogo} alt="Logo" className="header__logo" />
 
-                <nav className="header__nav">
+                {/* Bouton hamburger (mobile) */}
+                <button className="header__toggle" onClick={toggleMenu}>
+                    {isMenuOpen ? '✖' : '☰'}
+                </button>
+
+                <nav className={navClass}>
                     <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Mon compte</a></li>
+                        <li><Link to="/">Accueil</Link></li>
+                        <li><Link to="/about">About us</Link></li>
+                        <li><a href="javascript:void(0)">Mon compte</a></li>
                     </ul>
                 </nav>
             </div>

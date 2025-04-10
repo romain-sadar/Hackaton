@@ -11,28 +11,38 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 0rem 2rem;
+  padding: 0.5rem 2rem;
   z-index: 100;
   transition: all 0.3s ease;
-  box-shadow: none;
   font-family: "Nunito", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* === NAVIGATION === */
+  /* === BOUTON HAMBURGER (mobile) === */
+  /* === ÉTAT : TRANSPARENT (Desktop, sans scroll) === */
+  /* === ÉTAT : SCROLLED (Desktop, au scroll) === */
+  /* === SUR MOBILE, TEXTE TOUJOURS NOIR === */
 }
 .header__container {
   max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .header__logo {
-  height: 100px;
+  height: 60px;
   object-fit: contain;
+  transition: height 0.3s ease;
+}
+.header__nav {
+  /* --- Mobile menu (drawer) --- */
 }
 .header__nav ul {
   display: flex;
   gap: 2rem;
-}
-.header__nav ul li {
   list-style: none;
 }
 .header__nav ul li a {
@@ -42,24 +52,78 @@
   text-decoration: none;
   transition: color 0.2s ease;
 }
+@media (max-width: 768px) {
+  .header__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+  .header__nav ul {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .header__nav.open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+}
+.header__toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 200;
+}
+@media (max-width: 768px) {
+  .header__toggle {
+    display: block;
+  }
+}
 .header.transparent {
   background-color: transparent;
+  /* Sur desktop, le texte du menu est or */
+  /* Hamburger en or aussi ? */
 }
-.header.transparent .header__nav a {
-  color: white;
+.header.transparent .header__nav ul li a {
+  color: #c8924f;
 }
-.header.transparent .header__nav a:hover {
+.header.transparent .header__toggle {
   color: #c8924f;
 }
 .header.scrolled {
   background-color: #fff;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  /* Sur desktop, le texte du menu passe en noir */
+  /* Hamburger en noir */
 }
-.header.scrolled .header__nav a {
-  color: #c8924f;
+.header.scrolled .header__nav ul li a {
+  color: #333;
 }
-.header.scrolled .header__nav a:hover {
-  color: #a67838;
+.header.scrolled .header__toggle {
+  color: #333;
+}
+@media (max-width: 768px) {
+  .header .header__nav ul li a {
+    color: #333 !important;
+  }
 }
 
 .footer {
@@ -120,12 +184,14 @@
    1) HERO SECTION
 ================================ */
 .hero {
+  /* Hauteur initiale grand écran */
   height: 100vh;
   background-size: cover;
   background-position: center;
   position: relative;
   color: #fff;
-  /* Sur mobile, réduire un peu la hauteur de la hero */
+  /* ==================== 1) Responsive à ~992px ===================== */
+  /* ==================== 2) Responsive à ~768px ===================== */
 }
 .hero__overlay {
   background: rgba(0, 0, 0, 0.6);
@@ -138,7 +204,7 @@
 }
 .hero__content {
   text-align: center;
-  max-width: 800px; /* pour éviter un contenu trop large */
+  max-width: 800px; /* Pour éviter un contenu trop large */
   margin: 0 auto;
 }
 .hero__content h1 {
@@ -205,15 +271,46 @@
   cursor: not-allowed;
   opacity: 0.7;
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .hero {
-    height: 70vh; /* au lieu de 100vh, pour éviter l'effet "trop grand" */
+    height: 90vh; /* Au lieu de 100vh, on réduit un peu sur des laptops/tablettes */
   }
   .hero__content h1 {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
   }
   .hero__content p {
     font-size: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    height: auto; /* Laisse la section s’adapter au contenu */
+  }
+  .hero__overlay {
+    padding: 1.5rem;
+    align-items: flex-start; /* On peut aligner le contenu en haut si on veut */
+  }
+  .hero__content {
+    margin-top: 3rem; /* Espace en haut */
+  }
+  .hero__content h1 {
+    font-size: 2rem;
+  }
+  .hero__content p {
+    font-size: 0.95rem;
+  }
+  .hero__search-bar {
+    flex-direction: column; /* Empile select + bouton */
+    max-width: 100%; /* On peut prendre toute la largeur en mobile */
+  }
+  .hero__search-bar select {
+    border-radius: 6px; /* Le arrondi complet */
+    margin-bottom: 0.5rem;
+    padding-right: 2rem; /* On peut réduire un peu le padding */
+  }
+  .hero__search-bar button {
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
   }
 }
 
@@ -423,7 +520,7 @@
 ================================ */
 .stats-quartier-wrapper {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 2rem;
   /* Bloc principal (les stats) */
   /* Bloc de droite : note /100 */
@@ -439,6 +536,11 @@
   padding: 2rem;
   border-radius: 1rem;
   margin-bottom: 2rem;
+}
+@media (max-width: 768px) {
+  .stats-quartier-wrapper .stats-quartier-container {
+    width: 100%;
+  }
 }
 .stats-quartier-wrapper .stats-quartier-container h3 {
   font-size: 2rem;
@@ -570,6 +672,50 @@
   font-size: 1.1rem;
   font-weight: bold;
   color: #333;
+}
+
+.aboutus-container {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  background-color: #fafafa;
+  color: #1a1a1a;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.7;
+}
+.aboutus-container h1 {
+  font-family: "Cormorant", serif;
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+.aboutus-container h2 {
+  font-family: "Cormorant", serif;
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+.aboutus-container p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+.aboutus-container ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.aboutus-container ul li {
+  margin-bottom: 0.7rem;
+}
+.aboutus-container ul li strong {
+  color: #b68b4c;
+}
+.aboutus-container em {
+  font-style: italic;
+}
+.aboutus-container strong {
+  font-weight: 600;
 }
 
 .charts-container {

@@ -2,6 +2,7 @@
    1) HERO SECTION
 ================================ */
 .hero {
+  /* Hauteur initiale grand écran */
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -20,7 +21,7 @@
 
   &__content {
     text-align: center;
-    max-width: 800px; /* pour éviter un contenu trop large */
+    max-width: 800px; /* Pour éviter un contenu trop large */
     margin: 0 auto;
 
     h1 {
@@ -98,16 +99,52 @@
     }
   }
 
-  /* Sur mobile, réduire un peu la hauteur de la hero */
-  @media (max-width: 768px) {
-    height: 70vh; /* au lieu de 100vh, pour éviter l'effet "trop grand" */
+  /* ==================== 1) Responsive à ~992px ===================== */
+  @media (max-width: 992px) {
+    height: 90vh; /* Au lieu de 100vh, on réduit un peu sur des laptops/tablettes */
+
     &__content {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.6rem;
       }
-
       p {
         font-size: 1rem;
+      }
+    }
+  }
+
+  /* ==================== 2) Responsive à ~768px ===================== */
+  @media (max-width: 768px) {
+    height: auto; /* Laisse la section s’adapter au contenu */
+
+    &__overlay {
+      padding: 1.5rem;
+      align-items: flex-start; /* On peut aligner le contenu en haut si on veut */
+    }
+
+    &__content {
+      margin-top: 3rem;  /* Espace en haut */
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    &__search-bar {
+      flex-direction: column; /* Empile select + bouton */
+      max-width: 100%;       /* On peut prendre toute la largeur en mobile */
+
+      select {
+        border-radius: 6px;  /* Le arrondi complet */
+        margin-bottom: 0.5rem;
+        padding-right: 2rem; /* On peut réduire un peu le padding */
+      }
+
+      button {
+        border-radius: 6px;
+        padding: 0.8rem 1rem;
       }
     }
   }
@@ -353,7 +390,7 @@
 
 .stats-quartier-wrapper {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 2rem;
 
   @media (max-width: 768px) {
@@ -367,6 +404,10 @@
     padding: 2rem;
     border-radius: 1rem;
     margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
 
     h3 {
       font-size: 2rem;
