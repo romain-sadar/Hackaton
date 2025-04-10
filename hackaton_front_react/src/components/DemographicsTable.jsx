@@ -5,6 +5,8 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
+
+
     useEffect(() => {
         fetchAllDemographics();
     }, []);
@@ -64,7 +66,9 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
                 ))}
                 </tbody>
             </table>
+
         </section>
+
     );
 };
 

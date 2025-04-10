@@ -46,6 +46,20 @@ const api = {
             }
         }
     },
+    demographics: {
+        getAll: async () => {
+            try {
+                console.log('Fetching demographics data from:', `${API_BASE_URL}/api/demographics_dataset/`);
+                const response = await fetch(`${API_BASE_URL}/api/demographics_dataset/`);
+                const data = await handleResponse(response);
+                console.log('Raw demographics API response:', data);
+                return data;
+            } catch (error) {
+                console.error('Error fetching demographics data:', error);
+                throw error;
+            }
+        }
+    },
     // Add more API endpoints here as needed
 };
 
