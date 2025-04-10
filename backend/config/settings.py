@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 
 
 os.environ['GDAL_LIBRARY_PATH'] = '/usr/lib/libgdal.so'
@@ -87,11 +86,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://hackaton_ttx2_user:Urr39QwFluPWl38Pq1ckurpZyaQje2Tu@dpg-cvrrrcili9vc739n1of0-a:5432/hackaton_ttx2'
-    )
-}
-
+     'default': {
+         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+         'NAME': 'hackaton',
+         'USER': 'postgres',
+         'PASSWORD': 'root',
+         'HOST': 'db',
+         'PORT': '5432',
+     }
+     }
+    
 
 
 # Password validation
