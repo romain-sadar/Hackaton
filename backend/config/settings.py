@@ -88,9 +88,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://postgres:root@localhost:5432/hackaton'
+        default='postgres://hackaton_ttx2_user:Urr39QwFluPWl38Pq1ckurpZyaQje2Tu@dpg-cvrrrcili9vc739n1of0-a:5432/hackaton_ttx2'
     )
 }
+
 
 
 # Password validation
