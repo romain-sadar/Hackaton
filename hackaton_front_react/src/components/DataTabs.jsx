@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DemographyTable from './DemographyTable';
+import DemographyTable from './DemographicsTable.jsx';
 import AgeDistributionChart from './AgeDistributionChart';
 import GenderDistributionChart from './GenderDistributionChart';
 

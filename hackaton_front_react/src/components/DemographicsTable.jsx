@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const DemographicsTable = () => {
+const DemographicsTable = ({ selectedCity, isValidCity }) => {
     const [demographicsData, setDemographicsData] = useState([]);
     const [quartiers, setQuartiers] = useState([]);
     const [selectedQuartier, setSelectedQuartier] = useState('');
@@ -59,7 +59,7 @@ const DemographicsTable = () => {
 
     return (
         <section className="section-3">
-            <h2>Données démographiques</h2>
+            <h2>Données démographiques {selectedCity && isValidCity ? `de ${selectedCity}` : ''}</h2>
 
             <label htmlFor="quartier-select">Filtrer par quartier: </label>
             <select
