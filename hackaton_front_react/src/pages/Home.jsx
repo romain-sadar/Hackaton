@@ -1,18 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import backgroundImg from '../assets/images/webp/background_lyon.webp'
 import PriceEvolutionChart from '../components/PriceEvolutionChart'
-import PopulationEvolutionChart from '../components/PopulationEvolutionChart'
+import SalesEvolutionChart from '../components/SalesEvolutionChart'
 import DataTabs from '../components/DataTabs'
 import useQuartiers from '../hooks/useQuartiers'
+import useRealEstate from '../hooks/useRealEstate'
 
 const Home = () => {
+    const { quartiers, loading, error } = useQuartiers()
+    const { realEstateData } = useRealEstate()
     const [selectedCity, setSelectedCity] = useState('')
     const [isValidCity, setIsValidCity] = useState(false)
-    const { quartiers, loading, error } = useQuartiers()
+
+    // Set the first city as default when quartiers are loaded
+    useEffect(() => {
+        if (Array.isArray(quartiers) && quartiers.length > 0 && !selectedCity) {
+            const firstCity = quartiers[0].name || quartiers[0]
+            setSelectedCity(firstCity)
+            setIsValidCity(true)
+        }
+    }, [quartiers, selectedCity])
 
     useEffect(() => {
         console.log('Current quartiers:', quartiers);
     }, [quartiers]);
+
+    useEffect(() => {
+        console.log('Real estate data:', realEstateData);
+    }, [realEstateData]);
 
     const handleCityChange = (e) => {
         const value = e.target.value;
@@ -26,6 +41,9 @@ const Home = () => {
             console.log('Searching for:', selectedCity);
         }
     };
+
+    // Filter real estate data for the selected city
+    const selectedCityRealEstateData = realEstateData?.filter(item => item.quartier === selectedCity) || []
 
     if (loading) return <div>Chargement des quartiers...</div>;
     if (error) return <div>Erreur: {error}</div>;
@@ -75,11 +93,11 @@ const Home = () => {
                 <div className="charts-container">
                     <div className="chart-wrapper">
                         <h3>Évolution des prix</h3>
-                        <PriceEvolutionChart />
+                        <PriceEvolutionChart realEstateData={selectedCityRealEstateData} />
                     </div>
                     <div className="chart-wrapper">
-                        <h3>Évolution de la population</h3>
-                        <PopulationEvolutionChart />
+                        <h3>Évolution du nombre de ventes</h3>
+                        <SalesEvolutionChart realEstateData={selectedCityRealEstateData} />
                     </div>
                 </div>
             </section>

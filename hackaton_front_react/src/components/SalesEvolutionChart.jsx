@@ -1,10 +1,8 @@
-// src/components/LineChart.jsx
-
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import '../assets/styles/scss/import/components/_chart.scss';
 
-const PriceEvolutionChart = ({ realEstateData }) => {
+const SalesEvolutionChart = ({ realEstateData }) => {
     const chartRef = useRef(null);
     const chartInstance = useRef(null);
 
@@ -24,10 +22,10 @@ const PriceEvolutionChart = ({ realEstateData }) => {
                 data: {
                     labels: sortedData.map(item => item.annee),
                     datasets: [{
-                        label: 'Prix au m² (€)',
-                        data: sortedData.map(item => parseFloat(item.prix_m2)),
-                        borderColor: '#c8924f',
-                        backgroundColor: 'rgba(200, 146, 79, 0.1)',
+                        label: 'Nombre de ventes',
+                        data: sortedData.map(item => parseInt(item.nb_ventes)),
+                        borderColor: '#4a90e2',
+                        backgroundColor: 'rgba(74, 144, 226, 0.1)',
                         tension: 0.4,
                         fill: true
                     }]
@@ -49,7 +47,7 @@ const PriceEvolutionChart = ({ realEstateData }) => {
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return `Prix au m²: ${context.parsed.y.toFixed(2)} €`;
+                                    return `Nombre de ventes: ${context.parsed.y}`;
                                 }
                             }
                         }
@@ -58,8 +56,9 @@ const PriceEvolutionChart = ({ realEstateData }) => {
                         y: {
                             beginAtZero: false,
                             ticks: {
+                                stepSize: 50,
                                 callback: function(value) {
-                                    return value + ' €';
+                                    return value;
                                 }
                             }
                         }
@@ -82,4 +81,4 @@ const PriceEvolutionChart = ({ realEstateData }) => {
     );
 };
 
-export default PriceEvolutionChart;
+export default SalesEvolutionChart; 

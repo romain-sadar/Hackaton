@@ -32,6 +32,20 @@ const api = {
             }
         }
     },
+    realEstate: {
+        getAll: async () => {
+            try {
+                console.log('Fetching real estate data from:', `${API_BASE_URL}/api/real_estate/`);
+                const response = await fetch(`${API_BASE_URL}/api/real_estate/`);
+                const data = await handleResponse(response);
+                console.log('Raw real estate API response:', data);
+                return data;
+            } catch (error) {
+                console.error('Error fetching real estate data:', error);
+                throw error;
+            }
+        }
+    },
     // Add more API endpoints here as needed
 };
 
