@@ -25,8 +25,7 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
         }
     };
 
-    // Si l'utilisateur a choisi un quartier valide, on filtre la data
-    // Sinon, on affiche tout
+    // Si l'utilisateur a choisi un quartier valide, on filtre
     const filteredData = isValidCity
         ? demographicsData.filter(item => item.quartier === selectedCity)
         : demographicsData;
@@ -34,15 +33,14 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
     if (loading) {
         return <div>Chargement des données démographiques...</div>;
     }
-
     if (error) {
         return <div>Erreur: {error}</div>;
     }
 
     return (
-        <section className="section-3">
+        <section className="section-table">
             <h2>
-                Données démographiques
+                Données Démographiques
                 {selectedCity && isValidCity ? ` de ${selectedCity}` : ''}
             </h2>
 
@@ -58,10 +56,10 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
                 <tbody>
                 {filteredData.map((row, index) => (
                     <tr key={index}>
-                        <td>{row.quartier}</td>
-                        <td>{row.annee}</td>
-                        <td>{row.population}</td>
-                        <td>{row.revenu_median}</td>
+                        <td data-label="Quartier">{row.quartier}</td>
+                        <td data-label="Année">{row.annee}</td>
+                        <td data-label="Population">{row.population}</td>
+                        <td data-label="Revenu médian">{row.revenu_median}</td>
                     </tr>
                 ))}
                 </tbody>

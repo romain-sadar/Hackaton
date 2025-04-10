@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *, ::before, ::after {
   box-sizing: border-box;
   margin: 0;
@@ -115,13 +116,16 @@
   }
 }
 
+/* ================================
+   1) HERO SECTION
+================================ */
 .hero {
   height: 100vh;
   background-size: cover;
   background-position: center;
   position: relative;
   color: #fff;
-  font-family: "Nunito", sans-serif;
+  /* Sur mobile, réduire un peu la hauteur de la hero */
 }
 .hero__overlay {
   background: rgba(0, 0, 0, 0.6);
@@ -134,24 +138,23 @@
 }
 .hero__content {
   text-align: center;
-  max-width: auto;
+  max-width: 800px; /* pour éviter un contenu trop large */
   margin: 0 auto;
 }
 .hero__content h1 {
-  font-size: 3.2rem;
+  font-size: 3rem; /* 3.2rem -> 3rem, plus standard */
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 1rem;
-  font-family: "Fraunces", serif;
+  margin-bottom: 1.25rem;
 }
 .hero__content h1 span {
   color: #c8924f;
-  font-family: "Fraunces", serif;
 }
 .hero__content p {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   margin-bottom: 2.5rem;
   color: #eee;
+  line-height: 1.4;
 }
 .hero__search-bar {
   display: flex;
@@ -202,7 +205,21 @@
   cursor: not-allowed;
   opacity: 0.7;
 }
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh; /* au lieu de 100vh, pour éviter l'effet "trop grand" */
+  }
+  .hero__content h1 {
+    font-size: 2.2rem;
+  }
+  .hero__content p {
+    font-size: 1rem;
+  }
+}
 
+/* ================================
+   2) SECTION 2 (CHARTS)
+================================ */
 .section-2 {
   padding: 4rem 2rem;
   background-color: #fafafa;
@@ -210,30 +227,61 @@
   align-items: center;
   flex-direction: column;
 }
+.section-2 h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.section-2 .charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 900px) {
+  .section-2 .charts-container {
+    grid-template-columns: 1fr;
+  }
+}
+.section-2 .chart-wrapper {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.section-2 .chart-wrapper h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #444;
+  font-weight: 600;
+}
 .section-2 canvas {
   max-width: 100%;
   height: auto;
 }
 
+/* ================================
+   3) DATA TABS
+================================ */
 .data-tabs {
   padding-block: 2rem;
-  font-family: "Segoe UI", sans-serif;
 }
 .data-tabs .tab-buttons {
   display: flex;
-  gap: 0rem;
+  gap: 0;
   justify-content: flex-start;
   flex-wrap: wrap;
   padding-inline: 2rem;
+  width: 100%;
+  /* En dessous de 600px, on empile en colonne */
 }
 .data-tabs .tab-buttons button {
+  flex: 1;
   padding: 0.6rem 1.4rem;
   font-size: 0.95rem;
   font-weight: 500;
   color: #374151;
   background: #fff;
   border: 1px solid transparent;
-  border-radius: 0px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -247,57 +295,73 @@
   border-color: #1f2937;
   box-shadow: 0 4px 12px rgba(31, 41, 55, 0.2);
 }
-.section-3 {
+@media (max-width: 600px) {
+  .data-tabs .tab-buttons {
+    flex-direction: column;
+  }
+  .data-tabs .tab-buttons button {
+    margin-bottom: 0.5rem; /* petit espace entre les boutons */
+  }
+}
+.data-tabs .tab-content {
+  padding-top: 1rem;
+}
+
+/* ================================
+   4) TABLE GENERIQUE
+================================ */
+.section-table {
   padding: 2rem;
   background-color: #fafafa;
   border-radius: 1rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  /* RESPONSIVE TABLE
+     Au-dessous de 768px, on affiche le label via data-label */
 }
-.section-3 h2 {
+.section-table h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #333;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-weight: 700;
 }
-.section-3 table {
+.section-table table {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
-  font-family: "Nunito", sans-serif;
 }
-.section-3 table thead {
+.section-table table thead {
   background-color: #1f2937;
   color: #fff;
 }
-.section-3 table thead tr th {
+.section-table table thead tr th {
   padding: 1rem;
   text-align: left;
   font-size: 0.95rem;
   border-bottom: 1px solid #e5e7eb;
 }
-.section-3 table tbody tr:nth-child(even) {
+.section-table table tbody tr:nth-child(even) {
   background-color: #f5f7fa;
 }
-.section-3 table tbody tr:hover {
+.section-table table tbody tr:hover {
   background-color: #e0f2fe;
   transition: background-color 0.2s ease-in-out;
 }
-.section-3 table tbody tr td {
+.section-table table tbody tr td {
   padding: 1rem;
   font-size: 0.95rem;
   color: #333;
   border-bottom: 1px solid #e5e7eb;
 }
-.section-3 label {
+.section-table label {
   font-weight: 600;
   margin-right: 0.5rem;
   color: #333;
 }
-.section-3 select {
+.section-table select {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -306,42 +370,41 @@
   cursor: pointer;
   margin-bottom: 1.5rem;
   margin-left: 0.25rem;
-  font-family: "Nunito", sans-serif;
   transition: background-color 0.2s ease;
 }
-.section-3 select:hover {
+.section-table select:hover {
   background-color: #f5f7fa;
 }
-.section-3 select:focus {
+.section-table select:focus {
   border-color: #1f2937;
 }
 @media (max-width: 768px) {
-  .section-3 table,
-.section-3 thead,
-.section-3 tbody,
-.section-3 th,
-.section-3 td,
-.section-3 tr {
+  .section-table table,
+  .section-table thead,
+  .section-table tbody,
+  .section-table th,
+  .section-table td,
+  .section-table tr {
     display: block;
   }
-  .section-3 thead {
+  .section-table thead {
     display: none;
   }
-  .section-3 tbody tr {
-    margin-bottom: 1rem;
+  .section-table tbody tr {
+    margin-bottom: 1.5rem;
     background-color: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 1rem;
     overflow: hidden;
     padding: 1rem;
   }
-  .section-3 tbody tr td {
+  .section-table tbody tr td {
     position: relative;
-    padding-left: 50%;
+    padding-left: 35%;
     text-align: right;
     border: none;
   }
-  .section-3 tbody tr td::before {
+  .section-table tbody tr td::before {
     content: attr(data-label);
     position: absolute;
     top: 1rem;
@@ -349,9 +412,111 @@
     font-weight: 600;
     color: #666;
     white-space: nowrap;
+    font-size: 0.9rem;
   }
 }
 
+/* ================================
+   5) STATS QUARTIER (LES 6 CARTES)
+   + SCORE GLOBAL A DROITE
+================================ */
+.stats-quartier-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  /* Bloc principal (les stats) */
+  /* Bloc de droite : note /100 */
+}
+@media (max-width: 768px) {
+  .stats-quartier-wrapper {
+    flex-direction: column;
+  }
+}
+.stats-quartier-wrapper .stats-quartier-container {
+  flex: 1;
+  background-color: #fafafa;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.stats-quartier-wrapper .stats-quartier-container h3 {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+.stats-quartier-wrapper .stats-quartier-container .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .stats-quartier-wrapper .stats-quartier-container .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.stats-quartier-wrapper .stats-quartier-container .stats-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stats-quartier-wrapper .stats-quartier-container .stats-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.stats-quartier-wrapper .stats-quartier-container .stats-card .stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+.stats-quartier-wrapper .stats-quartier-container .stats-card .stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+.stats-quartier-wrapper .score-global-container {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e5e7eb;
+}
+@media (max-width: 768px) {
+  .stats-quartier-wrapper .score-global-container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+.stats-quartier-wrapper .score-global-container h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-weight: 700;
+}
+.stats-quartier-wrapper .score-global-container .score-global-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0 1rem 0;
+  color: #333;
+}
+.stats-quartier-wrapper .score-global-container p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ================================
+   6) REAL ESTATE SECTION
+================================ */
 .real-estate-section {
   padding: 2rem;
   background-color: #f8f9fa;
@@ -360,6 +525,8 @@
   text-align: center;
   margin-bottom: 2rem;
   color: #333;
+  font-size: 2rem;
+  font-weight: 700;
 }
 .real-estate-section .real-estate-grid {
   display: grid;
@@ -381,6 +548,7 @@
   color: #c8924f;
   margin-bottom: 1rem;
   font-size: 1.2rem;
+  font-weight: 600;
 }
 .real-estate-section .real-estate-card .real-estate-stats {
   display: grid;
@@ -434,12 +602,12 @@
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: #fafafa;
 }
 
 h1, h2, h3 {
-  font-family: "Fraunces", serif;
+  font-family: "Cormorant", serif;
 }
 
 .inner-div {

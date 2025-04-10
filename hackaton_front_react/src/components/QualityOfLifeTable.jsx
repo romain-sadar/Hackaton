@@ -32,15 +32,14 @@ const QualityOfLifeTable = ({ selectedCity, isValidCity }) => {
     if (loading) {
         return <div>Chargement des données Qualité de vie...</div>;
     }
-
     if (error) {
         return <div>Erreur : {error}</div>;
     }
 
     return (
-        <section className="section-3">
+        <section className="section-table">
             <h2>
-                Tableau - Qualité de vie
+                Données de Qualité de vie
                 {selectedCity && isValidCity ? ` à ${selectedCity}` : ''}
             </h2>
 
@@ -56,10 +55,10 @@ const QualityOfLifeTable = ({ selectedCity, isValidCity }) => {
                 <tbody>
                 {filteredData.map((item, idx) => (
                     <tr key={idx}>
-                        <td>{item.quartier}</td>
-                        <td>{item.annee}</td>
-                        <td>{item.pollution}</td>
-                        <td>{item.score_transport}</td>
+                        <td data-label="Quartier">{item.quartier}</td>
+                        <td data-label="Année">{item.annee}</td>
+                        <td data-label="Pollution">{item.pollution}</td>
+                        <td data-label="Score">{item.score_transport}</td>
                     </tr>
                 ))}
                 </tbody>

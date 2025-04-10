@@ -32,15 +32,14 @@ const RealEstateTable = ({ selectedCity, isValidCity }) => {
     if (loading) {
         return <div>Chargement des données immobilières...</div>;
     }
-
     if (error) {
         return <div>Erreur : {error}</div>;
     }
 
     return (
-        <section className="section-3">
+        <section className="section-table">
             <h2>
-                Tableau - Immobilier
+                Données Immobilières
                 {selectedCity && isValidCity ? ` à ${selectedCity}` : ''}
             </h2>
 
@@ -56,10 +55,10 @@ const RealEstateTable = ({ selectedCity, isValidCity }) => {
                 <tbody>
                 {filteredData.map((item, idx) => (
                     <tr key={idx}>
-                        <td>{item.quartier}</td>
-                        <td>{item.annee}</td>
-                        <td>{item.prix_m2}</td>
-                        <td>{item.nb_ventes}</td>
+                        <td data-label="Quartier">{item.quartier}</td>
+                        <td data-label="Année">{item.annee}</td>
+                        <td data-label="Prix au m²">{item.prix_m2}</td>
+                        <td data-label="Nb de ventes">{item.nb_ventes}</td>
                     </tr>
                 ))}
                 </tbody>
