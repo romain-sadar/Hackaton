@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from .models import QualityOfLife, RealEstate, Demographics, QualityOfLifeDataset, RealEstateDataset, DemographicsDataset
 from .serializers import QualityOfLifeSerializer, RealEstateSerializer, DemographicsSerializer, QualityOfLifeDatasetSerializer, RealEstateDatasetSerializer, DemographicsDatasetSerializer
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.views import APIView
 from django.db.models import Avg
@@ -54,3 +55,15 @@ class AverageByQuartierView(APIView):
             "average_quality_of_life": avg_quality_of_life.get('score_transport__avg', 0),
             "average_population": avg_population.get('population__avg', 0)
         }, status=status.HTTP_200_OK)
+    
+@api_view(['GET'])
+def list_quartiers(request):
+    quartiers_ql = QualityOfLife.objects.values_list('quartier', flat=True).distinct()
+    quartiers_re = RealEstate.objects.values_list('quartier', flat=True).distinct()
+    quartiers_demo = Demographics.objects.values_list('quartier', flat=True).distinct()
+
+    all_quartiers = set(q.strip() for q in quartiers_ql) | set(q.strip() for q in quartiers_re) | set(q.strip() for q in quartiers_demo)
+    
+    sorted_quartiers = sorted(all_quartiers)
+
+    return Response({"quartiers": sorted_quartiers})

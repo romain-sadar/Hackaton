@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from api.views import AverageByQuartierView
+from api.views import AverageByQuartierView, list_quartiers
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("api.urls")),
     path('average_by_quartier/<str:quartier>/', AverageByQuartierView.as_view(), name='average-by-quartier'),
+    path('list_quartiers/', list_quartiers, name='list-quartiers'),
 ]

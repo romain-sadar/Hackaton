@@ -1,7 +1,14 @@
 from django.db import models
 
+class Quartier(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
 class QualityOfLife(models.Model):
-    quartier = models.CharField(max_length=100)
+    quartier_temp = models.ForeignKey(Quartier, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    quartier = models.CharField(max_length=100)  # legacy field
     annee = models.IntegerField()
     pollution = models.DecimalField(max_digits=5, decimal_places=2)
     score_transport = models.IntegerField()
@@ -10,7 +17,8 @@ class QualityOfLife(models.Model):
         return f"Quality of Life in {self.quartier} for {self.annee}"
 
 class RealEstate(models.Model):
-    quartier = models.CharField(max_length=100)
+    quartier_temp = models.ForeignKey(Quartier, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    quartier = models.CharField(max_length=100)  # legacy field
     annee = models.IntegerField()
     prix_m2 = models.DecimalField(max_digits=10, decimal_places=2)
     nb_ventes = models.IntegerField()
@@ -19,7 +27,8 @@ class RealEstate(models.Model):
         return f"Real Estate in {self.quartier} for {self.annee}"
 
 class Demographics(models.Model):
-    quartier = models.CharField(max_length=100)
+    quartier_temp = models.ForeignKey(Quartier, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    quartier = models.CharField(max_length=100)  # legacy field
     annee = models.IntegerField()
     population = models.IntegerField()
     revenu_median = models.DecimalField(max_digits=15, decimal_places=2)
@@ -27,8 +36,11 @@ class Demographics(models.Model):
     def __str__(self):
         return f"Demographics in {self.quartier} for {self.annee}"
 
+
+
 class QualityOfLifeDataset(models.Model):
-    quartier = models.CharField(max_length=100)
+    quartier_temp = models.ForeignKey(Quartier, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    quartier = models.CharField(max_length=100)  # legacy field
     indice_pollution = models.DecimalField(max_digits=5, decimal_places=2)
     espaces_verts = models.DecimalField(max_digits=5, decimal_places=2)
     score_transport = models.IntegerField()
@@ -39,7 +51,8 @@ class QualityOfLifeDataset(models.Model):
         return f"Quality of Life Dataset in {self.quartier}"
 
 class RealEstateDataset(models.Model):
-    quartier = models.CharField(max_length=100)
+    quartier_temp = models.ForeignKey(Quartier, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    quartier = models.CharField(max_length=100)  # legacy field
     prix_moyen_m2 = models.DecimalField(max_digits=10, decimal_places=2)
     prix_median = models.DecimalField(max_digits=10, decimal_places=2)
     evolution_annuelle = models.DecimalField(max_digits=5, decimal_places=2)
@@ -51,7 +64,8 @@ class RealEstateDataset(models.Model):
         return f"Real Estate Dataset in {self.quartier}"
 
 class DemographicsDataset(models.Model):
-    quartier = models.CharField(max_length=100)
+    quartier_temp = models.ForeignKey(Quartier, on_delete=models.CASCADE, null=True, blank=True, related_name="+")
+    quartier = models.CharField(max_length=100)  # legacy field
     population = models.IntegerField()
     age_0_14 = models.IntegerField()
     age_15_64 = models.IntegerField()
