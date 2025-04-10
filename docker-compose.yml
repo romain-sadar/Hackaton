@@ -13,7 +13,11 @@ services:
     environment:
       - DEBUG=1
       - PYTHONUNBUFFERED=1
-      - DATABASE_URL=postgres://hackaton_ttx2_user:Urr39QwFluPWl38Pq1ckurpZyaQje2Tu@dpg-cvrrrcili9vc739n1of0-a:5432/hackaton_ttx2
+      - POSTGRES_DB=hackaton
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
 
     depends_on:
       - db
