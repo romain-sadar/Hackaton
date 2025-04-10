@@ -270,13 +270,36 @@
   color: #333;
   border-bottom: 1px solid #e5e7eb;
 }
+.section-3 label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+  color: #333;
+}
+.section-3 select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  margin-left: 0.25rem;
+  font-family: "Nunito", sans-serif;
+  transition: background-color 0.2s ease;
+}
+.section-3 select:hover {
+  background-color: #f5f7fa;
+}
+.section-3 select:focus {
+  border-color: #1f2937;
+}
 @media (max-width: 768px) {
   .section-3 table,
-.section-3 thead,
-.section-3 tbody,
-.section-3 th,
-.section-3 td,
-.section-3 tr {
+  .section-3 thead,
+  .section-3 tbody,
+  .section-3 th,
+  .section-3 td,
+  .section-3 tr {
     display: block;
   }
   .section-3 thead {
