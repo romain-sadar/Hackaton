@@ -19,10 +19,8 @@ export default function Header() {
         setIsMenuOpen((prev) => !prev);
     };
 
-    // Logo différent selon le scroll
     const currentLogo = isScrolled ? logoBlack : logoWhite;
 
-    // Classes dynamiques pour le header et la nav
     const headerClass = `header ${isScrolled ? 'scrolled' : 'transparent'}`;
     const navClass = `header__nav ${isMenuOpen ? 'open' : ''}`;
 

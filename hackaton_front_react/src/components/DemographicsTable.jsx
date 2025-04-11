@@ -14,7 +14,7 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
     const fetchAllDemographics = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:8000/api/demographics/');
+            const response = await fetch('https://hackaton-fqan.onrender.com/api/demographics/');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

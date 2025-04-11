@@ -12,7 +12,7 @@ const QualityOfLifeTable = ({ selectedCity, isValidCity }) => {
     const fetchQolData = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:8000/api/quality_of_life/');
+            const response = await fetch('https://hackaton-fqan.onrender.com/api/quality_of_life/');
             if (!response.ok) {
                 throw new Error(`Erreur HTTP : ${response.status}`);
             }

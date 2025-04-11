@@ -12,7 +12,7 @@ const RealEstateTable = ({ selectedCity, isValidCity }) => {
     const fetchRealEstateData = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:8000/api/real_estate/');
+            const response = await fetch('https://hackaton-fqan.onrender.com/api/real_estate/');
             if (!response.ok) {
                 throw new Error(`Erreur HTTP : ${response.status}`);
             }

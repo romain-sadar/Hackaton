@@ -60,10 +60,9 @@ const Home = () => {
     const { quartiers, loading, error } = useQuartiers();
     const { realEstateData } = useRealEstate();
 
-    const [selectedCity, setSelectedCity] = useState('');   // vide pour laisser "Sélectionnez un quartier"
+    const [selectedCity, setSelectedCity] = useState('');
     const [isValidCity, setIsValidCity] = useState(false);
 
-    // Juste pour observer si vous voulez
     useEffect(() => {
         console.log('Current quartiers:', quartiers);
     }, [quartiers]);
@@ -80,12 +79,10 @@ const Home = () => {
 
     const handleSearch = () => {
         if (isValidCity) {
-            // Logique de recherche si nécessaire
             console.log('Searching for:', selectedCity);
         }
     };
 
-    // Filtrer les données immo pour le quartier choisi
     const selectedCityRealEstateData = realEstateData?.filter(
         (item) => item.quartier === selectedCity
     ) || [];
@@ -93,7 +90,6 @@ const Home = () => {
     if (loading) return <div>Chargement des quartiers...</div>;
     if (error) return <div>Erreur: {error}</div>;
 
-    // Choix du background du hero selon la ville sélectionnée
     const chosenBackground = heroBackgrounds[selectedCity] || backgroundDefault;
 
     return (
@@ -121,7 +117,6 @@ const Home = () => {
                             >
                                 <option value="">Sélectionnez un quartier</option>
                                 {Array.isArray(quartiers) && quartiers.map((quartier, index) => {
-                                    // On récupère soit quartier.name, soit quartier si c'est juste une string
                                     const quartierName = quartier.name || quartier;
                                     return (
                                         <option key={index} value={quartierName}>

@@ -1,10 +1,5 @@
 // src/components/StatsQuartier.jsx
 import React, { useEffect, useState } from 'react';
-
-/**
- * Calcule un "score brut" à partir des statistiques d'un quartier.
- * Ajustez librement les formules et coefficients.
- */
 function calculerScoreBrut({
                                pollution,
                                score_transport,
@@ -13,8 +8,6 @@ function calculerScoreBrut({
                                population,
                                revenu_median
                            }) {
-    // On attribue des poids plus faibles pour éviter d'exploser le score.
-    // Exemple arbitraire :
     let score = 0;
 
     // +3 points par unité de "score_transport" (si c'est sur 10, max = 30)
@@ -34,25 +27,19 @@ function calculerScoreBrut({
     score += revenu_median / 10000;
 
     // petit bonus si le prix au m² < 3000
-    // => on ajoute entre 0 et 3 points max
+    // => ajoute entre 0 et 3 points max
     const diff = 3000 - Math.min(prix_m2, 3000); // ex : si prix_m2=2500 => diff=500
     score += diff / 1000;                       // => +0.5
 
     return score;
 }
 
-/**
- * Convertit un score brut en note /100,
- * en "clampant" entre 0 et 100 pour éviter les dépassements.
- */
 function convertirScoreEnNote(scoreBrut) {
-    // Ajustez ce max. S'il est trop bas, tout le monde sera à 100.
-    // S'il est trop haut, tout le monde sera à 20.
     const SCORE_MAX_THEORIQUE = 50;
 
     let note = (scoreBrut / SCORE_MAX_THEORIQUE) * 100;
 
-    // on borne (clamp) entre 0 et 100
+    // on borne entre 0 et 100
     if (note < 0) note = 0;
     if (note > 100) note = 100;
 
@@ -71,7 +58,7 @@ const StatsQuartier = ({ selectedCity, isValidCity }) => {
             try {
                 setLoading(true);
                 setError('');
-                const response = await fetch(`http://localhost:8000/stats_quartier/${selectedCity}/`);
+                const response = await fetch(`https://hackaton-fqan.onrender.com/stats_quartier/${selectedCity}/`);
                 if (!response.ok) {
                     throw new Error(`HTTP error: ${response.status}`);
                 }
@@ -162,12 +149,12 @@ const StatsQuartier = ({ selectedCity, isValidCity }) => {
                 </div>
             </div>
 
-            {/* Bloc de droite : note globale sur 100 */}
+            {/* bloc de droite : note globale sur 100 */}
             <aside className="score-global-container">
                 <h4>Note sur 100</h4>
                 <div className="score-global-value">{noteSur100}</div>
 
-                {/* Brève explication pour l'utilisateur */}
+                {/* explication pour l'utilisateur */}
                 <p style={{ fontSize: '0.9rem', color: '#666' }}>
                     Cette note évalue le quartier à partir de
                     la pollution, des transports, du prix au m²,
