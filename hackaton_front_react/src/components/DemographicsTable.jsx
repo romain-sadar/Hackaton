@@ -27,7 +27,6 @@ const DemographicsTable = ({ selectedCity, isValidCity }) => {
         }
     };
 
-    // Si l'utilisateur a choisi un quartier valide, on filtre
     const filteredData = isValidCity
         ? demographicsData.filter(item => item.quartier === selectedCity)
         : demographicsData;
