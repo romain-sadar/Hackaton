@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.views import APIView
 from django.db.models import Avg
+from django.http import JsonResponse
 
 # Quality of Life ViewSet
 class QualityOfLifeViewSet(viewsets.ModelViewSet):
@@ -90,3 +91,6 @@ def list_quartiers(request):
     sorted_quartiers = sorted(all_quartiers)
 
     return Response({"quartiers": sorted_quartiers})
+
+def health_check(request):
+    return JsonResponse({"status": "healthy"})
